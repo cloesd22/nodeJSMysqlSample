@@ -1,3 +1,5 @@
+//IN PROGRESS
+
 declare function require(name: string);
 
 var pdf = require('pdfkit');
@@ -22,6 +24,14 @@ class outputPDF implements outputPort{
         this.outputDOC.font('fonts/helvetica-Bold')
         .fontSize(25)
         .text(textLine)
+    }
+
+    stringParses(outputObject){
+        var OutputString = "";
+        outputObject.forEach(element => {
+            
+        });
+
     }
     
 }

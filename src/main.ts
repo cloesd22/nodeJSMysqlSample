@@ -31,7 +31,7 @@ class main{
     }
 
     public ListAllQuotesToCustomer(customerID:number){
-
+        
     }
 
     public ListTopQuotes(quoteNumber:3){
@@ -39,8 +39,7 @@ class main{
     }
 
     private synthesiseResult(dataObject){
-        //builds an object that neatly parses the customer information
-        //and returns an object to be sent to the export module.
+        this.outputOperator.displayAll(dataObject);
     }
 
 
