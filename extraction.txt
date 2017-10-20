@@ -1,0 +1,14 @@
+Classes:
+	-MYSQL adapter
+	-MongoDB adapter
+	-POSTGRES adapter
+
+	<data input interface>
+
+		data aquisition
+		data processing
+		output filter
+
+	<data output interface>
+	
+	-output print pDF

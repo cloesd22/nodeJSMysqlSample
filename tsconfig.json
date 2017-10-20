@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "outDir": "./jsBuilt",
+        "lib": [
+            "es2017",
+            "dom"
+        ]
+        
+       },
+    "exclude": [
+        "node_modules",
+        "**/node_modules/*"
+    ]
+}
