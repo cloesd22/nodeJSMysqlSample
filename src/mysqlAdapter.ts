@@ -36,7 +36,8 @@ export class mysqlAdapter implements crmPort {
 
             var sql = `SELECT ${fieldlist} FROM customers JOIN
                         tenders ON customers.companyID=tenders.companyID 
-                        WHERE customers.companyID=${id};`
+                        WHERE customers.companyID=${id} 
+                        ORDER BY tenders.tenderValue DESC;`
 
             return this.runQuery(sql);
         }
@@ -49,14 +50,14 @@ export class mysqlAdapter implements crmPort {
             var fieldlist = fieldList.join(",");
             var sql = `SELECT ${fieldlist} FROM customers JOIN
                         tenders ON customers.companyID=tenders.companyID 
-                        ORDER BY customers.companyID`
+                        ORDER BY tenders.tenderValue DESC;`
 
             return this.runQuery(sql);
         }
     }
 
     getXcustomerQuotes(amount: number, fieldList: string[]) {
-        // gets requesed fields 
+        // gets requested fields 
 
         if (this.con) {
 
@@ -64,7 +65,7 @@ export class mysqlAdapter implements crmPort {
 
             var sql = `SELECT ${fieldlist} FROM customers JOIN
                        tenders ON customers.companyID=tenders.companyID 
-                       ORDER BY tenders.tenderValue LIMIT ${amount}`
+                       ORDER BY tenders.tenderValue DESC LIMIT ${amount}`
 
             return this.runQuery(sql);
         }
@@ -90,7 +91,6 @@ export class mysqlAdapter implements crmPort {
                             reject(err);
                         }
                     }
-
                     resolve(result);
                 })
             }

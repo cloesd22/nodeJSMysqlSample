@@ -1,4 +1,10 @@
 "use strict";
+//TODO:
+// CHANGE THE MYSQL ADAPTERS TEST TO REFER TO 'QUOTES'
+// FINISH THE TEST FOR THE GET X FROM
+// THINK OF A FEW MORE TESTS
+// SETUP THE MAIN CLASS
+// SET UP THE PDF PARSER
 Object.defineProperty(exports, "__esModule", { value: true });
 var main = /** @class */ (function () {
     function main(crmdbModule, outputOperator) {

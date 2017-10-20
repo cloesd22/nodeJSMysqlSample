@@ -20,27 +20,27 @@ var mysqlAdapter = /** @class */ (function () {
             });
         });
     };
-    mysqlAdapter.prototype.getONEcustomerObject = function (id, fieldList) {
+    mysqlAdapter.prototype.getONEcustomersQuotes = function (id, fieldList) {
         //gets requested fields about one customer.
         if (this.con) {
             var fieldlist = fieldList.join(",");
-            var sql = "SELECT " + fieldlist + " FROM customers JOIN\n                        tenders ON customers.companyID=tenders.companyID \n                        WHERE customers.companyID=" + id + ";";
+            var sql = "SELECT " + fieldlist + " FROM customers JOIN\n                        tenders ON customers.companyID=tenders.companyID \n                        WHERE customers.companyID=" + id + " \n                        ORDER BY tenders.tenderValue DESC;";
             return this.runQuery(sql);
         }
     };
-    mysqlAdapter.prototype.getALLcustomerObjects = function (fieldList) {
+    mysqlAdapter.prototype.getALLQuotes = function (fieldList) {
         //gets requested fields about all customers in the database.
         if (this.con) {
             var fieldlist = fieldList.join(",");
-            var sql = "SELECT " + fieldlist + " FROM customers JOIN\n                        tenders ON customers.companyID=tenders.companyID \n                        ORDER BY customers.companyID";
+            var sql = "SELECT " + fieldlist + " FROM customers JOIN\n                        tenders ON customers.companyID=tenders.companyID \n                        ORDER BY tenders.tenderValue DESC;";
             return this.runQuery(sql);
         }
     };
-    mysqlAdapter.prototype.getXcustomerOjbects = function (amount, fieldList) {
-        // gets requesed fields 
+    mysqlAdapter.prototype.getXcustomerQuotes = function (amount, fieldList) {
+        // gets requested fields 
         if (this.con) {
             var fieldlist = fieldList.join(",");
-            var sql = "SELECT " + fieldlist + " FROM customers JOIN\n                       tenders ON customers.companyID=tenders.companyID \n                       ORDER BY customers.companyID LIMIT " + amount;
+            var sql = "SELECT " + fieldlist + " FROM customers JOIN\n                       tenders ON customers.companyID=tenders.companyID \n                       ORDER BY tenders.tenderValue DESC LIMIT " + amount;
             return this.runQuery(sql);
         }
     };
