@@ -1,8 +1,3 @@
-//TODO:
-    // THINK OF A FEW MORE TESTS
-    // SETUP THE MAIN CLASS
-    // SET UP THE PDF PARSER
-
 export interface crmPort{
 
     getONEcustomersQuotes(id:string,fieldList:string[]);
@@ -26,16 +21,21 @@ class main{
 
 
     public ListAllQuotes(){
-        var result = this.crmdbModule.getALLQuotes();
+        var result = this.crmdbModule.getALLQuotes(
+            ['company.name,tenders.tenderID,tenders.tenderValue']);
         this.synthesiseResult(result);
     }
 
     public ListAllQuotesToCustomer(customerID:number){
-        
+        var result = this.crmdbModule.getONEcustomersQuotes(customerID,
+            ['company.name,tenders.tenderID,tenders.tenderValue']);
+        this.synthesiseResult(result);
     }
 
-    public ListTopQuotes(quoteNumber:3){
-        
+    public ListTopQuotes(quoteNumber:number){
+        var result = this.crmdbModule.getXcustomerQuotes(quoteNumber,
+            ['company.name,tenders.tenderID,tenders.tenderValue']);
+        this.synthesiseResult(result);
     }
 
     private synthesiseResult(dataObject){
