@@ -1,5 +1,5 @@
 # nodeJSMysqlSample
-<<<<<<< HEAD
+
 Sample database data access app.
 
 test database image inside folder database.
@@ -27,19 +27,5 @@ TODO:
     Allow my dynamic querying/search by customer name etc.
     allow output csv in custom locations.
     add more export modules (HTML/databaseMigration/pdf).
-=======
 
 
-Reading MYSQL/MariaDB database from nodejS.
-
-Sample customer database provided.
-Current functionality is read only, database has default data.
-
-Current output module is to export it to a CSV file.
-
-
-TodoList:
-  -Standardise field list which main class calls
-  -More integration testing.
-  -Testing should populate database before each test.
->>>>>>> d523d800d087b70269abfad6a60026ca6525a59e
