@@ -21,11 +21,16 @@ Basic operation:
     and export that in csv format.
 
 TODO:
-    provide user interface to select which query to perform
-    adapt test files to generate consitent entries before testing for more robust testing.
-    Add more queries
-    Allow my dynamic querying/search by customer name etc.
-    allow output csv in custom locations.
-    add more export modules (HTML/databaseMigration/pdf).
+    -provide user interface to select which query to perform
+    
+    -adapt test files to generate consitent entries before testing for more robust testing.
+    
+    -Add more queries
+    
+    -Allow my dynamic querying/search by customer name etc.
+    
+    -allow output csv in custom locations.
+    
+    -add more export modules (HTML/databaseMigration/pdf).
 
 
