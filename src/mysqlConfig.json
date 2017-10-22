@@ -3,5 +3,6 @@
     "host":"localhost",
     "user":"root",
     "password":"testpassword",
-    "database":"CRM"
+    "database":"CRM",
+    "connectionLimit":10
 }

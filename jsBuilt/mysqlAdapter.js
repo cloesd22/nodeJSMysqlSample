@@ -1,31 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var mysql = require('mysql');
+var poolBuilder = require('./sqlConnectionPool').poolBuilder;
 var mysqlAdapter = /** @class */ (function () {
     function mysqlAdapter(mysqlConfigurationObject) {
-        var _this = this;
-        this.createDBconnection(mysqlConfigurationObject).then(function (data) {
-            _this.con = data;
-        });
+        this.con = new poolBuilder(mysqlConfigurationObject).getPool();
     }
-    mysqlAdapter.prototype.createDBconnection = function (dbconfigOjbect) {
-        var con = mysql.createConnection(dbconfigOjbect, { multipleStatements: true });
-        return new Promise(function (resolve, reject) {
-            con.connect(function (err) {
-                if (err) {
-                    console.log(err);
-                    throw err;
-                }
-                resolve(con);
-            });
-        });
-    };
     mysqlAdapter.prototype.getONEcustomersQuotes = function (id, fieldList) {
         //gets requested fields about one customer.
         if (this.con) {
             var fieldlist = fieldList.join(",");
             var sql = "SELECT " + fieldlist + " FROM customers JOIN\n                        tenders ON customers.companyID=tenders.companyID \n                        WHERE customers.companyID=" + id + " \n                        ORDER BY tenders.tenderValue DESC;";
             return this.runQuery(sql);
+        }
+        else {
+            console.log("No database Connection");
         }
     };
     mysqlAdapter.prototype.getALLQuotes = function (fieldList) {
@@ -35,37 +23,50 @@ var mysqlAdapter = /** @class */ (function () {
             var sql = "SELECT " + fieldlist + " FROM customers JOIN\n                        tenders ON customers.companyID=tenders.companyID \n                        ORDER BY tenders.tenderValue DESC;";
             return this.runQuery(sql);
         }
+        else {
+            console.log("No database Connection");
+        }
     };
     mysqlAdapter.prototype.getXcustomerQuotes = function (amount, fieldList) {
         // gets requested fields 
         if (this.con) {
             var fieldlist = fieldList.join(",");
-            var sql = "SELECT " + fieldlist + " FROM customers JOIN\n                       tenders ON customers.companyID=tenders.companyID \n                       ORDER BY tenders.tenderValue DESC LIMIT " + amount;
+            var sql = "SELECT " + fieldlist + " FROM customers JOIN\n                        tenders ON customers.companyID=tenders.companyID \n                        ORDER BY tenders.tenderValue DESC LIMIT " + amount;
             return this.runQuery(sql);
+        }
+        else {
+            console.log("No database Connection");
         }
     };
     mysqlAdapter.prototype.getCon = function () {
         return this.con;
     };
+    mysqlAdapter.prototype.closeCon = function () {
+        this.con.end();
+    };
     mysqlAdapter.prototype.runQuery = function (query) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            if (_this.con) {
-                var sql = query;
-                _this.con.query(sql, function (err, result) {
-                    if (err) {
-                        if (err.errno == 1054) {
-                            console.log("Requested field not found");
-                            resolve();
-                        }
-                        else {
-                            console.log(err);
-                            reject(err);
-                        }
+            _this.con.getConnection(function (err, connection) {
+                if (err) {
+                    connection.release();
+                    throw err;
+                }
+                connection.query(query, function (err, result) {
+                    connection.release();
+                    if (!err) {
+                        resolve(result);
                     }
-                    resolve(result);
+                    else {
+                        console.log("Error executing query -" + err);
+                        resolve();
+                    }
                 });
-            }
+                connection.on('error', function (err) {
+                    reject();
+                    throw err;
+                });
+            });
         });
     };
     return mysqlAdapter;

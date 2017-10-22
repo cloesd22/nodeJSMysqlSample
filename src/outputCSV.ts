@@ -36,11 +36,17 @@ export class outputCSV implements outputPort {
     generateFieldList(dataObject: object[]) {
         var fieldArray = [];
 
-        if (dataObject[0]) {
+        try {
             Object.keys(dataObject[0]).forEach(key => {
                 fieldArray.push(key);
             });
+        } catch (error) {
+            console.log("No fields");
+            
         }
+
+
+
         return fieldArray;
     }
 

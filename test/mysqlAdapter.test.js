@@ -20,7 +20,7 @@ describe('database diagnostics', () => {
         it('should be able to extract requested fields on a specific customer', (done) => {
 
             dbAdappter.getONEcustomersQuotes('3',
-                ['customers.companyName,customers.companyWorth', 'customers.noEmployees,tenders.tenderValue']).then((result) => {
+                ['customers.companyName,customers.companyWorth','customers.noEmployees,tenders.tenderValue']).then((result) => {
 
 
                     expect(result[1].companyName).to.be.equal('companyC');

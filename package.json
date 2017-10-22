@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "bnt": "tsc && mocha ./test/*.test.js --exit"
+    "bnt": "tsc && mocha ./test/*.test.js --exit",
+    "start": "tsc && node ./jsBuilt/app.js"
   },
   "author": "",
   "license": "ISC",

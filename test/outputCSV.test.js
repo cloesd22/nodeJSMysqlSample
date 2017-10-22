@@ -35,7 +35,6 @@ describe('CSV output', (params) => {
 
         outputModule.displayAll(dataObject);
         
-        console.log(process.cwd());
         if(fs.existsSync('./output/results.csv')){
             expect(1).to.be.equal(1);
         }else{

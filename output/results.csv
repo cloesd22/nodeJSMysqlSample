@@ -1,3 +1,6 @@
-"test1","test2","test3","test4"
-34,32,34,32
-34,32,34,32
+"companyName","tenderID","tenderValue"
+"companyC",10,500
+"companyA",9,400
+"companyC",6,200
+"companyB",7,150
+"companyA",8,50

@@ -7,26 +7,30 @@ var outputCSV = /** @class */ (function () {
     }
     outputCSV.prototype.displayAll = function (outputOjbect) {
         var fields = this.generateFieldList(outputOjbect);
-        /*         try { */
-        var result = csv({ data: outputOjbect, fields: fields });
-        fs.writeFile('./output/results.csv', result, function (error) {
-            if (error) {
-                throw error;
-            }
-            console.log("saved");
-        });
-        /*         } catch (error) {
-                    console.log(error);
-                } */
+        try {
+            var result = csv({ data: outputOjbect, fields: fields });
+            fs.writeFile('./output/results.csv', result, function (error) {
+                if (error) {
+                    throw error;
+                }
+                console.log("saved");
+            });
+        }
+        catch (error) {
+            console.log(error);
+        }
     };
     outputCSV.prototype.createOutputObject = function (name) {
     };
     outputCSV.prototype.generateFieldList = function (dataObject) {
         var fieldArray = [];
-        if (dataObject[0]) {
+        try {
             Object.keys(dataObject[0]).forEach(function (key) {
                 fieldArray.push(key);
             });
+        }
+        catch (error) {
+            console.log("No fields");
         }
         return fieldArray;
     };
