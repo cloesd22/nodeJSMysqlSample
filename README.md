@@ -1,6 +1,6 @@
 # nodeJSMysqlSample
 
-#Sample database data access app.
+# Sample database data access app.
 
 test database image inside folder database.
 
@@ -8,7 +8,7 @@ database details inside src/mysqlConfig.
 
 database version 10.2.9-MariaDB
 
-##NPM COMMANDS:
+## NPM COMMANDS:
 npm run bnt
 
     -Runs build and test (Compiles typescript into javascript in jsBuilt)
@@ -19,11 +19,11 @@ npm start
    - runs the commands in app.js
 
 
-##Basic operation:
+## Basic operation:
     running npm start will fetch data from the mysql database as specified by arguments
     and export that in csv format.
 
-##TODO:
+## TODO:
 
     -provide user interface to select which query to perform
     
