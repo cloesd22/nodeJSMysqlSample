@@ -16,7 +16,8 @@ npm run bnt
     -tests are testing the test database. Some tests may fail if database contents is manually modified.
 
 npm start
-   - runs the commands in app.js
+
+    -runs the commands in app.js
 
 
 ## Basic operation:
