@@ -5,7 +5,9 @@
 Simple demonstration on reading data from MYSQL/MariaDB using NodeJS/Typescript.
 
 test database image inside folder database.
+
 database details inside src/mysqlConfig.
+
 database version 10.2.9-MariaDB
 
 ## NPM COMMANDS:
