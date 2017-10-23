@@ -23,8 +23,18 @@ npm start
 
 
 ## Basic operation:
-    running npm start will fetch data from the mysql database as specified by arguments
-    and export that in csv format.
+    To use:
+    
+     -Run NPM INSTALL
+     -Import the database image by creating an empty database called CRM, then:
+     
+        Mysql –u <username> -p <databasename> < <exportfilename>.sql
+        
+        username and pass are in th dbconfig file inside of /src/.
+        filename = exportTestDatabase.sql
+        
+       -npm bnt to build and ensure unit tests pass.
+       -npm start to run the program demonstrating extraction from SQL database into CSV file in outputs folder.
 
 ## TODO:
 
